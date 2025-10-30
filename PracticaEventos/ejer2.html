@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2 - Formulario</title>
+    <style>
+        .error {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        input {
+            display: block;
+            margin: 10px 0;
+            padding: 8px;
+            width: 300px;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+        }
+        button:disabled {
+            background-color: gray;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <h1>Formulario de Registro</h1>
+    
+    <form id="formulario">
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email">
+        <div id="errorEmail" class="error"></div>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+        <div id="errorPassword" class="error"></div>
+        
+        <button type="submit" id="btnEnviar" disabled>Enviar</button>
+    </form>
+    
+    <script src="ejer2.js"></script>
+</body>
+</html>
