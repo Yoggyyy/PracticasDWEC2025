@@ -1,3 +1,5 @@
+//no funciona correctamente los botones no van 
+
 // Elementos del DOM
 const inputNombre = document.getElementById('nombre');
 const btnGuardar = document.getElementById('btnGuardar');
@@ -35,3 +37,4 @@ btnBorrar.addEventListener('click', function() {
     localStorage.removeItem('nombreUsuario');
     location.reload();
 });
+
