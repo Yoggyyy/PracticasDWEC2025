@@ -1,3 +1,12 @@
+/* 
+Simula un precio de una acción de la bolsa 
+que cambia cada segundo:
+• Empieza en 100 y cada segundo sube o baja entre 
+-5 y +5 aleatoriamente y muestra el precio en pantalla.
+• Si el precio llega a 120 → mensaje "¡Máximo alcanzado!" 
+y detener. Si baja de 80 → mensaje "¡Mínimo alcanzado!" y detener.
+ */
+
 // Elementos del DOM
 const spanPrecio = document.getElementById('precio');
 const divMensaje = document.getElementById('mensaje');
