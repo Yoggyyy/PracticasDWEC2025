@@ -6,6 +6,7 @@ La página tendrá:
 • Un botón “Realizar compra”.
 • Un elemento <p> para mostrar el resultado.
 Cuando el usuario pulse el botón, deben ocurrir dos pasos encadenados:
+
 1. Función procesarPago(producto) que devuelve una promesa.
 o Espera 1,5 segundos antes de resolverse o rechazarse.
 o Si se ha introducido un producto, se resuelve con el mensaje
@@ -23,26 +24,52 @@ aleatorio:
 El resultado final (o el error) debe mostrarse en un <p> del DOM. 
 */
 
-const inputProducto = document.getElementById('producto');
-const btnGuardar = document.getElementById('btnComprar');
-const resultado = document.getElementById('resultado');
+const inputProducto = document.getElementById("producto");
+const inputDireccion = document.getElementById("direccion");
+const btnGuardar = document.getElementById("btnComprar");
+const resultado = document.getElementById("resultado");
 
+btnGuardar.addEventListener("click", function () {
+  const producto = inputProducto.value.trim();
+  const direccion = inputDireccion.value.trim();
 
-
-btnGuardar.addEventListener('click',function(){
-
-})
+  procesarPago(producto)
+    .then((mensaje) => {
+      resultado.innerHTML = mensaje;
+      return enviarPedido(direccion);
+    })
+    .then((mensaje) => {
+      resultado.innerHTML = mensaje;
+    })
+    .catch((error) => {
+      resultado.innerHTML = error;
+    });
+});
 
 function procesarPago(producto) {
-    const producto = inputProducto.value.trim();
+  return new Promise((resolver, rechazar) => {
+    setTimeout(() => {
+      if (producto !== "") {
+        resolver(`Pago procesado correctamente para ${producto}`);
+      } else {
+        rechazar(`No se puede procesar el pago sin producto`);
+      }
+    }, 1500);
+  });
+}
 
-    return new Promise ((resolver, rechazar) => {
-        let intervalo = setInterval(function(){
-            if (producto !== ''){
-                resolver(`Pago procesado correctamente para ${producto}`)
-            }else{
-                rechazar(`No se puede procesar el pago sin producto`)
-            }
-        }, 1500)
-    })
+function enviarPedido(direccion) {
+  return new Promise((resolver, rechazar) => {
+    if (direccion !== "") {
+      setTimeout(() => {
+        if (Math.random() < 0.2) {
+          rechazar("Error durante el envío, intente de nuevo");
+        } else {
+          resolver(`Pedido enviado correctamente a ${direccion}`);
+        }
+      }, 2000);
+    } else {
+      rechazar("Direccion de envio no valida");
+    }
+  });
 }
