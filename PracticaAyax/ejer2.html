@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica 2 - Productos</title>
+</head>
+<body>
+    <h1>Práctica 2: Operaciones con APIs</h1>
+    
+    <form id="product-form">
+        <label for="delay">Retraso en segundos:</label><br>
+        <input type="number" id="delay" min="0" value="0" required>
+        <br><br>
+        
+        <label for="product-id">ID del producto (1-20):</label><br>
+        <input type="number" id="product-id" min="1" max="20" value="1" required>
+        <br><br>
+        
+        <button type="button" onclick="procesarProducto()">Enviar</button>
+    </form>
+    
+    <h2>Resultado GET</h2>
+    <p><strong>ID:</strong> <span id="product-id-result">-</span></p>
+    <p><strong>Título:</strong> <span id="title-result">-</span></p>
+    <p><strong>Precio:</strong> <span id="price-result">-</span></p>
+    
+    <h2>Resultado POST</h2>
+    <p><strong>Título devuelto:</strong> <span id="post-title-result">-</span></p>
+    
+    <h2>Status</h2>
+    <p><strong>Código:</strong> <span id="status-result">-</span></p>
+    
+    <script src="ejer2.js"></script>
+</body>
+</html>
