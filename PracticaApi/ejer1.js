@@ -4,19 +4,18 @@ function timeout(ms) {
 }
 
 // Función para actualizar la cuenta regresiva
-function iniciarCuentaRegresiva() {
-    let contador = 5;
+async function iniciarCuentaRegresiva() {
     const elemento = document.getElementById('cuentaRegresiva');
     
-    const intervalo = setInterval(() => {
-        contador--;
+    for (let contador = 5; contador >= 0; contador--) {
         elemento.textContent = contador;
         
         if (contador === 0) {
-            clearInterval(intervalo);
             mostrarNotificacion();
+        } else {
+            await timeout(1000); 
         }
-    }, 1000);
+    }
 }
 
 // Función para mostrar la notificación
@@ -27,7 +26,7 @@ function mostrarNotificacion() {
         });
 
         notificacion.onclick = () => {
-            window.location.href = 'video.html'; // Redirige al hacer clic
+            window.location.href = 'video.html';
         };
 
     } else if (Notification.permission !== 'denied') {
@@ -39,5 +38,5 @@ function mostrarNotificacion() {
     }
 }
 
-// Iniciar la cuenta regresiva después de 5 segundos
-timeout(5000).then(iniciarCuentaRegresiva);
+// Iniciar la cuenta regresiva inmediatamente
+iniciarCuentaRegresiva();
