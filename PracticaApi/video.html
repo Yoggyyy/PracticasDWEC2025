@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Video Personalizado</title>
+</head>
+<body>
+    <video id="miVideo" width="600">
+        <source src="video.mp4" type="video/mp4">
+        Tu navegador no soporta el elemento de video.
+    </video>
+    <div id="duracion"></div>
+
+    <script>
+        const video = document.getElementById('miVideo');
+        const duracionDiv = document.getElementById('duracion');
+
+        // Control con clic izquierdo: Play/Pause
+        video.addEventListener('click', (event) => {
+            if (event.button === 0) { // Botón izquierdo
+                if (video.paused) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
+            }
+        });
+
+        // Control con clic derecho: Mostrar duración
+        video.addEventListener('contextmenu', (event) => {
+            event.preventDefault(); // Evita el menú contextual
+            if (event.button === 2) { // Botón derecho
+                const minutos = Math.floor(video.duration / 60);
+                const segundos = Math.floor(video.duration % 60);
+                duracionDiv.textContent = `Duración: ${minutos}m ${segundos}s`;
+            }
+        });
+    </script>
+</body>
+</html>
